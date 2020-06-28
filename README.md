@@ -14,11 +14,11 @@ Just contact the Telegram bot [@epub_to_pdf_bot](https://t.me/epub_to_pdf_bot) a
 
 - python3
 - python-telegram-bot
-- ebook-convert
+- calibre (ebook-convert)
 
 If you are using Linux as OS you could install the requirements using the package manager, for debian-based you could use the following command to install the main requirements:
 ```
-sudo apt install python3 python3-pip ebook-convert
+sudo apt install python3 python3-pip calibre
 ```
 
 To install the python-telegram-bot framework you can use `pip` the python package manager:
