@@ -29,7 +29,6 @@ def conversion(update: Update, context: CallbackContext):
         os.remove(file_pdf)
     else:
         update.message.reply_text('Send me a file.epub I will convert it into PDF')
-        return
 
 def main():
   updater = Updater(TOKEN, use_context=True)
