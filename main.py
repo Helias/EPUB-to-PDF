@@ -19,14 +19,21 @@ def conversion(update: Update, context: CallbackContext):
 
     if update.message.document:
         file_name=update.message.document.file_name
+        full_path = "files/" + file_name
         file = context.bot.getFile(update.message.document.file_id)
-        file.download(file_name)
+        file.download(full_path)
         update.message.reply_text('Processing...' + file_name)
-        file_pdf = file_name.replace(".epub", ".pdf")
-        os.system("ebook-convert '" + file_name + "' '" + file_pdf + "'") # conversion to PDF
+        file_pdf = full_path.replace(".epub", ".pdf")
+
+        print("####################################")
+        print('ebook-convert "' + full_path + '" "' + file_pdf + '"')
+        print("####################################")
+
+        os.system('ebook-convert "' + full_path + '" "' + file_pdf + '"') # conversion to PDF
         context.bot.send_document(chat_id=update.message.chat_id, document=open(file_pdf, 'rb'), caption="Here your PDF!")
-        os.remove(file_name)
+        os.remove(full_path)
         os.remove(file_pdf)
+        os.system('find files/ -name "*" ! -iname ".gitkeep" -type f -delete')
     else:
         update.message.reply_text('Send me a file.epub I will convert it into PDF')
 
