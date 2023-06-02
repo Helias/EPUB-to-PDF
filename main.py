@@ -3,7 +3,7 @@ from telegram.ext import (
     Updater,
     CommandHandler,
     MessageHandler,
-    Filters,
+    filters,
     CallbackContext,
 )
 
@@ -63,7 +63,7 @@ def main():
 
     dp = updater.dispatcher
 
-    dp.add_handler(MessageHandler(Filters.document, conversion))
+    dp.add_handler(MessageHandler(filters.document, conversion))
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", start))
 
